@@ -6,6 +6,10 @@ npm create astro@latest -- --template basics
 
 > 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
+## 🌐 Live Demo
+
+Preview the template here: [demo-template-01.vercel.app](https://demo-template-01.vercel.app/)
+
 ## 🚀 Project Structure
 
 Inside of your Astro project, you'll see the following folders and files:
