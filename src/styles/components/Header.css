@@ -1,0 +1,140 @@
+.site-header {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1.1rem;
+	padding: 0.85rem;
+	border: 1px solid var(--border-soft);
+	border-radius: 1.2rem;
+	background: var(--bg-surface);
+	backdrop-filter: blur(15px);
+	position: sticky;
+	top: 1rem;
+	z-index: 30;
+	box-shadow: 0 12px 28px -20px var(--glow-strong);
+}
+
+.nav-list {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.35rem;
+	padding: 0.2rem;
+	border-radius: 0.9rem;
+	border: 1px solid var(--border-soft);
+	background: color-mix(in oklab, var(--bg-surface) 70%, transparent);
+}
+
+.nav-list a {
+	text-decoration: none;
+	color: var(--text-secondary);
+	font-size: 0.84rem;
+	padding: 0.46rem 0.72rem;
+	border-radius: 0.55rem;
+	transition: color 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+.nav-list a:hover {
+	color: var(--text-primary);
+	background: color-mix(in oklab, var(--glow-soft) 42%, transparent);
+	transform: translateY(-1px);
+}
+
+.theme-toggle {
+	border: 1px solid var(--border-soft);
+	background: color-mix(in oklab, var(--bg-surface) 75%, transparent);
+	color: var(--text-primary);
+	border-radius: 999px;
+	width: 4.3rem;
+	height: 2.3rem;
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	padding: 0.15rem;
+	position: relative;
+	overflow: hidden;
+	transition: border-color 180ms ease, transform 180ms ease;
+	appearance: none;
+	-webkit-appearance: none;
+}
+
+.theme-toggle:hover {
+	transform: translateY(-1px);
+}
+
+.theme-toggle-track {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	display: block;
+}
+
+.theme-icon {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 0.95rem;
+	height: 0.95rem;
+	color: var(--text-secondary);
+	z-index: 2;
+}
+
+.sun-icon {
+	left: 0.4rem;
+}
+
+.moon-icon {
+	right: 0.4rem;
+}
+
+.theme-toggle-thumb {
+	position: absolute;
+	top: 50%;
+	left: 0.12rem;
+	width: 1.62rem;
+	height: 1.62rem;
+	border-radius: 999px;
+	transform: translateY(-50%);
+	background: linear-gradient(140deg, #dcfce7, #86efac);
+	box-shadow: 0 0 14px color-mix(in oklab, var(--glow-strong) 76%, transparent);
+}
+
+:root.theme-ready .theme-toggle-thumb {
+	transition: transform 220ms ease, background 220ms ease;
+}
+
+:root.dark .theme-toggle-thumb {
+	transform: translate(1.95rem, -50%);
+	background: linear-gradient(140deg, #14532d, #22c55e);
+}
+
+:root.dark .sun-icon {
+	color: color-mix(in oklab, var(--text-secondary) 70%, transparent);
+}
+
+:root.dark .moon-icon {
+	color: var(--text-primary);
+}
+
+@media (max-width: 1024px) {
+	.site-header {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+}
+
+@media (max-width: 640px) {
+	.site-header {
+		border-radius: 1rem;
+	}
+
+	.nav-list {
+		justify-content: center;
+	}
+
+	.theme-toggle {
+		width: 3.9rem;
+	}
+}

@@ -41,6 +41,14 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
+## 🔐 Private Portfolio Data
+
+This template keeps personal data out of git by ignoring `src/config/portfolio.ts`.
+
+1. Copy `src/config/portfolio.template.ts` to `src/config/portfolio.ts`.
+2. Replace the values in `portfolio.ts` with your real name, email, and links.
+3. Keep `portfolio.template.ts` as the reusable public template.
+
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

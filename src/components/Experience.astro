@@ -1,0 +1,43 @@
+---
+import "../styles/components/Experience.css";
+import { portfolioConfig } from "../config/portfolio";
+---
+
+<section class="experience-section" id="experiencia">
+	<div class="experience-header">
+		<p class="eyebrow">Trayectoria</p>
+		<h2>{portfolioConfig.experienceSectionTitle}</h2>
+	</div>
+
+	<div class="timeline">
+		<div class="timeline-line" aria-hidden="true"></div>
+		{
+			portfolioConfig.experiences.map((experience, index) => (
+				<article class="experience-card timeline-item">
+					<div class="timeline-node" aria-hidden="true">
+						<span>{String(index + 1).padStart(2, "0")}</span>
+					</div>
+					<div class="experience-glow" aria-hidden="true"></div>
+					<header>
+						<h3>{experience.role}</h3>
+						<p class="company">{experience.company}</p>
+						<p class="meta">
+							{experience.workMode}
+							<span>•</span>
+							{experience.location}
+							<span>•</span>
+							{experience.dateRange}
+						</p>
+					</header>
+					<ul>
+						{experience.achievements.map((achievement) => <li>{achievement}</li>)}
+					</ul>
+				</article>
+			))
+		}
+	</div>
+</section>
+
+<script>
+	import "../scripts/components/experience.js";
+</script>

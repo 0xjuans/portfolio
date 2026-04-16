@@ -1,0 +1,41 @@
+---
+import "../styles/components/Header.css";
+---
+
+<header class="site-header">
+	<nav class="nav-list" aria-label="Primary navigation">
+		<a href="#inicio">Inicio</a>
+		<a href="#experiencia">Experiencia</a>
+		<a href="#projects">Proyectos</a>
+		<a href="#about">Sobre mí</a>
+		<a href="#educacion">Educación</a>
+		<a href="#certificados">Certificados</a>
+		<a href="#contact">Contacto</a>
+	</nav>
+	<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color mode">
+		<span class="theme-toggle-track" aria-hidden="true">
+			<svg class="theme-icon sun-icon" viewBox="0 0 24 24" fill="none">
+				<circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"></circle>
+				<path
+					d="M12 2.5V5.2M12 18.8V21.5M21.5 12H18.8M5.2 12H2.5M18.7 5.3L16.8 7.2M7.2 16.8L5.3 18.7M18.7 18.7L16.8 16.8M7.2 7.2L5.3 5.3"
+					stroke="currentColor"
+					stroke-width="1.8"
+					stroke-linecap="round"
+				></path>
+			</svg>
+			<svg class="theme-icon moon-icon" viewBox="0 0 24 24" fill="none">
+				<path
+					d="M20 15.6A8.9 8.9 0 1 1 8.4 4a7.2 7.2 0 1 0 11.6 11.6Z"
+					stroke="currentColor"
+					stroke-width="1.8"
+					stroke-linejoin="round"
+				></path>
+			</svg>
+			<span class="theme-toggle-thumb"></span>
+		</span>
+	</button>
+</header>
+
+<script>
+	import "../scripts/components/header.js";
+</script>

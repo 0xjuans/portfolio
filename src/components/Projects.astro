@@ -1,0 +1,63 @@
+---
+import "../styles/components/Projects.css";
+import { portfolioConfig } from "../config/portfolio";
+---
+
+<section class="projects-section" id="projects">
+	<div class="projects-header">
+		<p class="eyebrow">Builds</p>
+		<h2>{portfolioConfig.projectsSectionTitle}</h2>
+	</div>
+
+	<div class="projects-grid">
+		{
+			portfolioConfig.projects.map((project) => (
+				<article class="project-card">
+					<figure class="project-media">
+						<img src={project.imageUrl} alt={`Vista previa del proyecto ${project.name}`} loading="lazy" />
+						<figcaption>{project.highlight}</figcaption>
+					</figure>
+					<div class="project-aura" aria-hidden="true"></div>
+					<div class="project-content">
+						<p class="project-highlight">{project.highlight}</p>
+						<h3>{project.name}</h3>
+						<p class="project-description">{project.description}</p>
+						<div class="project-stack">
+							{project.stack.map((technology) => <span>{technology}</span>)}
+						</div>
+					</div>
+					<div class="project-links">
+						<a href={project.projectUrl} target="_blank" rel="noopener noreferrer" class="project-link live-link">
+							<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+								<path
+									d="M14 5H19V10M10 14L19 5M18 13V18C18 18.5304 17.7893 19.0391 17.4142 19.4142C17.0391 19.7893 16.5304 20 16 20H6C5.46957 20 4.96086 19.7893 4.58579 19.4142C4.21071 19.0391 4 18.5304 4 18V8C4 7.46957 4.21071 6.96086 4.58579 6.58579C4.96086 6.21071 5.46957 6 6 6H11"
+									stroke="currentColor"
+									stroke-width="1.8"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								></path>
+							</svg>
+							Ver proyecto
+						</a>
+						<a href={project.sourceUrl} target="_blank" rel="noopener noreferrer" class="project-link code-link">
+							<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+								<path
+									d="M8.5 16.5L4 12L8.5 7.5M15.5 7.5L20 12L15.5 16.5M13 5L11 19"
+									stroke="currentColor"
+									stroke-width="1.8"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								></path>
+							</svg>
+							Código
+						</a>
+					</div>
+				</article>
+			))
+		}
+	</div>
+</section>
+
+<script>
+	import "../scripts/components/projects.js";
+</script>
