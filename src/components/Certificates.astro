@@ -1,0 +1,95 @@
+---
+import "../styles/components/Certificates.css";
+import { portfolioConfig } from "../config/portfolio.template";
+
+const certificateImages = import.meta.glob("../assets/certificates/**/*.{webp,png,jpg,jpeg}", {
+	eager: true,
+	import: "default"
+});
+
+const filters = ["Todos", ...new Set(portfolioConfig.certificates.map((certificate) => certificate.category))];
+---
+
+<section class="certificates-section" id="certificados">
+	<div class="certificates-header">
+		<p class="eyebrow">Logros</p>
+		<h2>{portfolioConfig.certificatesSectionTitle}</h2>
+		<p class="certificates-intro">Colección curada de formación técnica en desarrollo de software y ciberseguridad.</p>
+	</div>
+
+	<div class="certificates-toolbar">
+		<p>{portfolioConfig.certificatesFilterLabel}</p>
+		<div class="filters" role="tablist" aria-label="Certificados por categoría">
+			{
+				filters.map((filter, index) => (
+					<button class="filter-button" data-filter={filter} role="tab" aria-selected={index === 0 ? "true" : "false"}>
+						{filter}
+					</button>
+				))
+			}
+		</div>
+		<p class="certificate-count">
+			<span data-certificate-count>{portfolioConfig.certificates.length}</span> certificados encontrados
+		</p>
+	</div>
+
+	<div class="certificates-carousel">
+		<div class="carousel-controls">
+			<button class="carousel-nav" data-carousel-prev aria-label="Ver certificados anteriores">‹</button>
+			<button class="carousel-nav" data-carousel-next aria-label="Ver más certificados">›</button>
+		</div>
+		<div class="certificates-viewport" data-carousel-viewport>
+			<div class="certificates-track">
+				{
+					portfolioConfig.certificates.map((certificate) => {
+						const imageKey = `../assets/certificates/${certificate.imagePath}`;
+						const imageAsset = certificateImages[imageKey] as string | { src?: string } | undefined;
+						const imageUrl =
+							typeof imageAsset === "string" ? imageAsset : imageAsset && typeof imageAsset.src === "string" ? imageAsset.src : "";
+
+						return (
+							<article class="certificate-card" data-category={certificate.category}>
+								<div class="certificate-media">
+									{imageUrl ? (
+										<>
+											<img src={imageUrl} alt={`Certificado: ${certificate.title}`} loading="lazy" />
+											<div class="certificate-overlay" aria-hidden="true"></div>
+										</>
+									) : (
+										<div class="certificate-fallback">Imagen no disponible</div>
+									)}
+								</div>
+								<div class="certificate-content">
+									<div class="certificate-meta">
+										<p class="certificate-category">{certificate.category}</p>
+										<p class="certificate-date">{certificate.date}</p>
+									</div>
+									<h3>{certificate.title}</h3>
+									<p class="certificate-issuer">{certificate.issuer}</p>
+									{imageUrl && (
+										<a class="certificate-action" href={imageUrl} target="_blank" rel="noopener noreferrer">
+											<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+												<path
+													d="M14 5H19V10M10 14L19 5M18 13V18C18 18.5304 17.7893 19.0391 17.4142 19.4142C17.0391 19.7893 16.5304 20 16 20H6C5.46957 20 4.96086 19.7893 4.58579 19.4142C4.21071 19.0391 4 18.5304 4 18V8C4 7.46957 4.21071 6.96086 4.58579 6.58579C4.96086 6.21071 5.46957 6 6 6H11"
+													stroke="currentColor"
+													stroke-width="1.8"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+												></path>
+											</svg>
+											Ver certificado
+										</a>
+									)}
+								</div>
+							</article>
+						);
+					})
+				}
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	import "../scripts/components/certificates.js";
+</script>

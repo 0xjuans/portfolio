@@ -1,0 +1,280 @@
+.education-section {
+	margin-top: 2.6rem;
+	padding-bottom: 0.6rem;
+}
+
+.education-header h2 {
+	margin: 0.5rem 0 0;
+	font-size: clamp(1.45rem, 2.8vw, 2.2rem);
+}
+
+.education-timeline {
+	margin-top: 1.05rem;
+	display: grid;
+	gap: 0.95rem;
+	position: relative;
+	padding: 0.2rem 0;
+}
+
+.timeline-rail {
+	position: absolute;
+	left: 50%;
+	top: 0;
+	bottom: 0;
+	width: 2px;
+	transform: translateX(-50%);
+	background: linear-gradient(180deg, var(--glow-strong), var(--border-soft));
+	opacity: 0.75;
+}
+
+.education-card {
+	position: relative;
+	overflow: hidden;
+	border: 1px solid var(--border-soft);
+	border-radius: 1rem;
+	padding: 1rem 1rem 1.1rem;
+	background: color-mix(in oklab, var(--bg-surface) 86%, transparent);
+	backdrop-filter: blur(10px);
+	width: calc(50% - 1.3rem);
+	transition: transform 220ms ease, border-color 220ms ease;
+}
+
+.education-card:hover {
+	transform: translateY(-2px);
+	border-color: color-mix(in oklab, var(--glow-strong) 82%, transparent);
+}
+
+.left-card {
+	justify-self: start;
+}
+
+.right-card {
+	justify-self: end;
+}
+
+.education-node {
+	width: 1.7rem;
+	height: 1.7rem;
+	border-radius: 999px;
+	display: grid;
+	place-items: center;
+	border: 1px solid var(--border-soft);
+	background: linear-gradient(140deg, color-mix(in oklab, var(--bg-surface) 72%, transparent), var(--bg-accent));
+	font-size: 0.65rem;
+	font-weight: 700;
+	margin-bottom: 0.75rem;
+	position: absolute;
+	top: 1rem;
+	z-index: 2;
+	box-shadow: 0 0 0 4px color-mix(in oklab, var(--bg-primary) 80%, transparent);
+}
+
+.left-card .education-node {
+	right: -2.15rem;
+}
+
+.right-card .education-node {
+	left: -2.15rem;
+}
+
+.education-orbit {
+	position: absolute;
+	top: 1.25rem;
+	width: 0.95rem;
+	height: 0.95rem;
+	border-radius: 999px;
+	border: 1px dashed color-mix(in oklab, var(--glow-strong) 72%, transparent);
+	opacity: 0.75;
+}
+
+.left-card .education-orbit {
+	right: -3rem;
+}
+
+.right-card .education-orbit {
+	left: -3rem;
+}
+
+.education-glow {
+	position: absolute;
+	inset: auto -25% -55% auto;
+	width: 210px;
+	height: 210px;
+	background: radial-gradient(circle, var(--glow-soft), transparent 70%);
+	pointer-events: none;
+}
+
+.education-body {
+	position: relative;
+	z-index: 1;
+}
+
+.education-kicker {
+	margin: 0;
+	font-size: 0.72rem;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--text-secondary);
+}
+
+.education-card h3 {
+	margin: 0;
+	padding-top: 0.35rem;
+	font-size: 1.06rem;
+}
+
+.institution {
+	margin: 0.42rem 0 0;
+	color: var(--text-secondary);
+	font-weight: 600;
+}
+
+.education-date {
+	margin: 0.4rem 0 0;
+	color: var(--text-secondary);
+	font-size: 0.9rem;
+}
+
+.complementary-education {
+	margin-top: 1.15rem;
+	border: 1px solid var(--border-soft);
+	border-radius: 1rem;
+	padding: 1rem;
+	background: color-mix(in oklab, var(--bg-surface) 85%, transparent);
+	position: relative;
+	overflow: hidden;
+}
+
+.complementary-education::before {
+	content: "";
+	position: absolute;
+	inset: auto -12% -58% auto;
+	width: 240px;
+	height: 240px;
+	background: radial-gradient(circle, var(--glow-soft), transparent 72%);
+	pointer-events: none;
+}
+
+.complementary-head {
+	position: relative;
+	z-index: 1;
+}
+
+.complementary-head h3 {
+	margin: 0.25rem 0 0;
+	font-size: 1.2rem;
+}
+
+.complementary-head p {
+	margin: 0.45rem 0 0;
+	color: var(--text-secondary);
+}
+
+.learning-meta {
+	margin-top: 0.65rem;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.learning-meta span {
+	padding: 0.3rem 0.58rem;
+	border-radius: 999px;
+	border: 1px solid var(--border-soft);
+	font-size: 0.73rem;
+	background: color-mix(in oklab, var(--bg-surface) 72%, transparent);
+}
+
+.courses-marquee {
+	margin-top: 0.9rem;
+	display: grid;
+	gap: 0.45rem;
+	mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+	position: relative;
+	z-index: 1;
+}
+
+.marquee-row {
+	display: flex;
+	gap: 0.5rem;
+	width: max-content;
+}
+
+.marquee-left {
+	animation: marquee-left 68s linear infinite;
+}
+
+.marquee-right {
+	animation: marquee-right 72s linear infinite;
+}
+
+.courses-cloud {
+	margin-top: 0.95rem;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	position: relative;
+	z-index: 1;
+}
+
+.course-pill {
+	padding: 0.45rem 0.65rem;
+	border-radius: 999px;
+	border: 1px solid var(--border-soft);
+	font-size: 0.78rem;
+	background: color-mix(in oklab, var(--bg-surface) 72%, transparent);
+}
+
+.static-pill {
+	display: none;
+}
+
+@keyframes marquee-left {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+@keyframes marquee-right {
+	from {
+		transform: translateX(-50%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+
+@media (max-width: 900px) {
+	.timeline-rail {
+		left: 0.92rem;
+		transform: none;
+	}
+
+	.education-card {
+		width: calc(100% - 2.2rem);
+		justify-self: end;
+	}
+
+	.left-card .education-node,
+	.right-card .education-node {
+		left: -2.15rem;
+		right: auto;
+	}
+
+	.left-card .education-orbit,
+	.right-card .education-orbit {
+		left: -3rem;
+		right: auto;
+	}
+
+	.courses-marquee {
+		display: none;
+	}
+
+	.static-pill {
+		display: inline-flex;
+	}
+}

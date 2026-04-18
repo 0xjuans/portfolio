@@ -1,0 +1,120 @@
+---
+import "../styles/components/Technologies.css";
+import { portfolioConfig } from "../config/portfolio.template";
+
+const techIconByName: Record<string, string> = {
+	HTML5: "https://svgl.app/library/html5.svg",
+	CSS3: "https://svgl.app/library/css.svg",
+	JavaScript: "https://svgl.app/library/javascript.svg",
+	Bootstrap: "https://svgl.app/library/bootstrap.svg",
+	React: "https://svgl.app/library/react_light.svg",
+	Tailwind: "https://svgl.app/library/tailwindcss.svg",
+	PHP: "https://svgl.app/library/php.svg",
+	Laravel: "https://svgl.app/library/laravel.svg",
+	"Node.js": "https://svgl.app/library/nodejs.svg",
+	Java: "https://svgl.app/library/java.svg",
+	Python: "https://svgl.app/library/python.svg",
+	MySQL: "https://svgl.app/library/mysql-icon-light.svg",
+	MongoDB: "https://svgl.app/library/mongodb-icon-light.svg",
+	PostgreSQL: "https://svgl.app/library/postgresql.svg",
+	"Power BI": "https://svgl.app/library/microsoft.svg",
+	Git: "https://svgl.app/library/git.svg",
+	GitHub: "https://svgl.app/library/github_light.svg",
+	Docker: "https://svgl.app/library/docker.svg",
+	"AWS": "https://svgl.app/library/aws_light.svg",
+	"VS Code": "https://svgl.app/library/vscode.svg"
+};
+const technologies = portfolioConfig.technologies.flatMap((technologyGroup) =>
+	technologyGroup.items.map((technologyItem) => ({
+		category: technologyGroup.category,
+		name: technologyItem
+	}))
+);
+---
+
+<section class="technologies-section" id="tecnologias">
+	<div class="technologies-header">
+		<p class="eyebrow">Stack</p>
+		<h2>{portfolioConfig.technologiesSectionTitle}</h2>
+		<p class="technologies-intro">Carrusel orbital de habilidades técnicas con foco en desarrollo, datos y tooling.</p>
+	</div>
+
+	<div class="technology-orbit" data-tech-orbit>
+		<div class="technology-spotlight" data-tech-spotlight aria-hidden="true"></div>
+		<div class="orbit-row orbit-row-left">
+			<div class="orbit-track">
+				{
+					[...technologies, ...technologies].map((technologyItem) => (
+						<article class="tech-chip">
+							{
+								techIconByName[technologyItem.name] ? (
+									<img
+										class="tech-icon"
+										src={techIconByName[technologyItem.name]}
+										alt={`${technologyItem.name} icon`}
+										loading="lazy"
+									/>
+								) : (
+									<span class="tech-fallback-icon" aria-hidden="true">{technologyItem.name.charAt(0)}</span>
+								)
+							}
+							<div>
+								<p class="tech-category">{technologyItem.category}</p>
+								<p class="tech-name">{technologyItem.name}</p>
+							</div>
+						</article>
+					))
+				}
+			</div>
+		</div>
+		<div class="orbit-row orbit-row-right">
+			<div class="orbit-track">
+				{
+					[...technologies.slice().reverse(), ...technologies.slice().reverse()].map((technologyItem) => (
+						<article class="tech-chip">
+							{
+								techIconByName[technologyItem.name] ? (
+									<img
+										class="tech-icon"
+										src={techIconByName[technologyItem.name]}
+										alt={`${technologyItem.name} icon`}
+										loading="lazy"
+									/>
+								) : (
+									<span class="tech-fallback-icon" aria-hidden="true">{technologyItem.name.charAt(0)}</span>
+								)
+							}
+							<div>
+								<p class="tech-category">{technologyItem.category}</p>
+								<p class="tech-name">{technologyItem.name}</p>
+							</div>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</div>
+	<div class="tech-mobile-grid">
+		{
+			technologies.map((technologyItem) => (
+				<article class="tech-chip">
+					{
+						techIconByName[technologyItem.name] ? (
+							<img class="tech-icon" src={techIconByName[technologyItem.name]} alt={`${technologyItem.name} icon`} loading="lazy" />
+						) : (
+							<span class="tech-fallback-icon" aria-hidden="true">{technologyItem.name.charAt(0)}</span>
+						)
+					}
+					<div>
+						<p class="tech-category">{technologyItem.category}</p>
+						<p class="tech-name">{technologyItem.name}</p>
+					</div>
+				</article>
+			))
+		}
+	</div>
+</section>
+
+<script>
+	import "../scripts/components/technologies.js";
+</script>

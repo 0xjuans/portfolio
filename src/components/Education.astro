@@ -1,0 +1,73 @@
+---
+import "../styles/components/Education.css";
+import { portfolioConfig } from "../config/portfolio.template";
+
+const complementaryCourses = portfolioConfig.complementaryEducationCourses;
+---
+
+<section class="education-section" id="educacion">
+	<div class="education-header">
+		<p class="eyebrow">Formación</p>
+		<h2>{portfolioConfig.educationSectionTitle}</h2>
+	</div>
+
+	<div class="education-timeline">
+		<div class="timeline-rail" aria-hidden="true"></div>
+		{
+			portfolioConfig.education.map((educationItem, index) => (
+				<article class={`education-card ${index % 2 === 0 ? "left-card" : "right-card"}`}>
+					<div class="education-node" aria-hidden="true">
+						<span>{String(index + 1).padStart(2, "0")}</span>
+					</div>
+					<div class="education-orbit" aria-hidden="true"></div>
+					<div class="education-glow" aria-hidden="true"></div>
+					<div class="education-body">
+						<p class="education-kicker">Ruta académica</p>
+						<h3>{educationItem.degree}</h3>
+						<p class="institution">{educationItem.institution}</p>
+						<p class="education-date">{educationItem.dateRange}</p>
+					</div>
+				</article>
+			))
+		}
+	</div>
+
+	<section class="complementary-education" aria-label={portfolioConfig.complementaryEducationTitle}>
+		<div class="complementary-head">
+			<p class="eyebrow">Especialización continua</p>
+			<h3>{portfolioConfig.complementaryEducationTitle}</h3>
+			<p>{portfolioConfig.complementaryEducationProvider}</p>
+			<div class="learning-meta">
+				<span>{complementaryCourses.length} cursos clave</span>
+				<span>Actualización constante</span>
+			</div>
+		</div>
+		<div class="courses-marquee">
+			<div class="marquee-row marquee-left">
+				{
+					[...complementaryCourses, ...complementaryCourses].map((course) => (
+						<span class="course-pill">{course}</span>
+					))
+				}
+			</div>
+			<div class="marquee-row marquee-right">
+				{
+					[...complementaryCourses, ...complementaryCourses].map((course) => (
+						<span class="course-pill">{course}</span>
+					))
+				}
+			</div>
+		</div>
+		<div class="courses-cloud">
+			{
+				complementaryCourses.map((course) => (
+					<span class="course-pill static-pill">{course}</span>
+				))
+			}
+		</div>
+	</section>
+</section>
+
+<script>
+	import "../scripts/components/education.js";
+</script>
