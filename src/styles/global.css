@@ -68,6 +68,16 @@ body > :not(.motion-background) {
 	opacity: 0.58;
 }
 
+@media (max-width: 720px) {
+	.motion-background {
+		opacity: 0.95;
+	}
+
+	:root.dark .motion-background {
+		opacity: 0.82;
+	}
+}
+
 html {
 	scroll-behavior: smooth;
 	scroll-padding-top: 5rem;

@@ -11,11 +11,15 @@ if (canvas && !prefersReducedMotion.matches) {
 	let animationFrame = 0;
 	let pixelRatio = 1;
 
-	const ribbons = [
-		{ y: 0.18, amplitude: 44, speed: 0.00028, thickness: 96, phase: 0 },
-		{ y: 0.48, amplitude: 62, speed: 0.00022, thickness: 128, phase: 1.8 },
-		{ y: 0.78, amplitude: 52, speed: 0.00024, thickness: 112, phase: 3.1 }
-	];
+	const getRibbons = () => {
+		const isMobile = window.innerWidth < 720;
+
+		return [
+			{ y: 0.16, amplitude: isMobile ? 58 : 44, speed: 0.00028, thickness: isMobile ? 128 : 96, phase: 0 },
+			{ y: 0.48, amplitude: isMobile ? 78 : 62, speed: 0.00022, thickness: isMobile ? 158 : 128, phase: 1.8 },
+			{ y: 0.8, amplitude: isMobile ? 64 : 52, speed: 0.00024, thickness: isMobile ? 138 : 112, phase: 3.1 }
+		];
+	};
 	const codeTokens = ["{ }", "</>", "=>", "const", "API", "01", "git", "fn()", "UI", "SQL"];
 	const codeStreams = [];
 
@@ -32,17 +36,17 @@ if (canvas && !prefersReducedMotion.matches) {
 	};
 
 	const createCodeStreams = () => {
-		const streamCount = window.innerWidth < 720 ? 9 : 18;
+		const streamCount = window.innerWidth < 720 ? 18 : 18;
 		codeStreams.length = 0;
 
 		for (let index = 0; index < streamCount; index += 1) {
 			codeStreams.push({
 				x: Math.random() * width,
 				y: Math.random() * height,
-				speed: 0.08 + Math.random() * 0.18,
+				speed: (window.innerWidth < 720 ? 0.12 : 0.08) + Math.random() * 0.18,
 				token: codeTokens[index % codeTokens.length],
 				phase: Math.random() * Math.PI * 2,
-				size: 10 + Math.random() * 8
+				size: (window.innerWidth < 720 ? 13 : 10) + Math.random() * 8
 			});
 		}
 	};
@@ -50,18 +54,22 @@ if (canvas && !prefersReducedMotion.matches) {
 	const getColors = () => {
 		if (isDarkMode()) {
 			return {
-				ribbon: ["rgba(56, 189, 248, 0.12)", "rgba(10, 102, 194, 0.04)"],
+				ribbon: window.innerWidth < 720
+					? ["rgba(56, 189, 248, 0.24)", "rgba(10, 102, 194, 0.1)"]
+					: ["rgba(56, 189, 248, 0.12)", "rgba(10, 102, 194, 0.04)"],
 				line: "rgba(147, 197, 253, 0.18)",
-				glow: "rgba(10, 102, 194, 0.2)",
-				code: "rgba(191, 219, 254, 0.34)"
+				glow: window.innerWidth < 720 ? "rgba(10, 102, 194, 0.34)" : "rgba(10, 102, 194, 0.2)",
+				code: window.innerWidth < 720 ? "rgba(191, 219, 254, 0.52)" : "rgba(191, 219, 254, 0.34)"
 			};
 		}
 
 		return {
-			ribbon: ["rgba(10, 102, 194, 0.11)", "rgba(96, 165, 250, 0.035)"],
+			ribbon: window.innerWidth < 720
+				? ["rgba(10, 102, 194, 0.22)", "rgba(96, 165, 250, 0.09)"]
+				: ["rgba(10, 102, 194, 0.11)", "rgba(96, 165, 250, 0.035)"],
 			line: "rgba(10, 102, 194, 0.12)",
-			glow: "rgba(96, 165, 250, 0.18)",
-			code: "rgba(10, 102, 194, 0.28)"
+			glow: window.innerWidth < 720 ? "rgba(96, 165, 250, 0.3)" : "rgba(96, 165, 250, 0.18)",
+			code: window.innerWidth < 720 ? "rgba(10, 102, 194, 0.44)" : "rgba(10, 102, 194, 0.28)"
 		};
 	};
 
@@ -111,8 +119,8 @@ if (canvas && !prefersReducedMotion.matches) {
 
 	const drawCursorAurora = (colors) => {
 		const x = pointer.active ? pointer.x : width * 0.74;
-		const y = pointer.active ? pointer.y : height * 0.22;
-		const radius = pointer.active ? 230 : 300;
+		const y = pointer.active ? pointer.y : height * (window.innerWidth < 720 ? 0.34 : 0.22);
+		const radius = pointer.active ? 230 : window.innerWidth < 720 ? 240 : 300;
 		const gradient = context.createRadialGradient(x, y, 0, x, y, radius);
 
 		gradient.addColorStop(0, colors.glow);
@@ -124,7 +132,6 @@ if (canvas && !prefersReducedMotion.matches) {
 
 	const drawCodeStreams = (colors, time) => {
 		context.save();
-		context.font = "700 14px 'Cascadia Code', 'Fira Code', Consolas, monospace";
 		context.textBaseline = "middle";
 
 		for (const stream of codeStreams) {
@@ -136,7 +143,8 @@ if (canvas && !prefersReducedMotion.matches) {
 			}
 
 			const alpha = (Math.sin(time * 0.001 + stream.phase) + 1) * 0.5;
-			context.globalAlpha = 0.38 + alpha * 0.42;
+			context.font = `700 ${stream.size}px 'Cascadia Code', 'Fira Code', Consolas, monospace`;
+			context.globalAlpha = window.innerWidth < 720 ? 0.48 + alpha * 0.42 : 0.38 + alpha * 0.42;
 			context.fillStyle = colors.code;
 			context.fillText(stream.token, stream.x, stream.y);
 		}
@@ -149,7 +157,7 @@ if (canvas && !prefersReducedMotion.matches) {
 		const colors = getColors();
 		context.clearRect(0, 0, width, height);
 		drawCursorAurora(colors);
-		ribbons.forEach((ribbon, index) => drawRibbon(ribbon, colors, time, index));
+		getRibbons().forEach((ribbon, index) => drawRibbon(ribbon, colors, time, index));
 		drawCodeStreams(colors, time);
 		animationFrame = window.requestAnimationFrame(animate);
 	};
