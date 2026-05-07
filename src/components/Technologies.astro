@@ -35,8 +35,9 @@ const technologies = portfolioConfig.technologies.flatMap((technologyGroup) =>
 <section class="technologies-section" id="tecnologias">
 	<div class="technologies-header">
 		<p class="eyebrow">Stack</p>
-		<h2>{portfolioConfig.technologiesSectionTitle}</h2>
-		<p class="technologies-intro">Carrusel orbital de habilidades técnicas con foco en desarrollo, datos y tooling.</p>
+		<h2 data-i18n-es={portfolioConfig.technologiesSectionTitle} data-i18n-en={portfolioConfig.english.technologiesSectionTitle}>
+			{portfolioConfig.technologiesSectionTitle}
+		</h2>
 	</div>
 
 	<div class="technology-orbit" data-tech-orbit>
@@ -59,7 +60,13 @@ const technologies = portfolioConfig.technologies.flatMap((technologyGroup) =>
 								)
 							}
 							<div>
-								<p class="tech-category">{technologyItem.category}</p>
+								<p
+									class="tech-category"
+									data-i18n-es={technologyItem.category}
+									data-i18n-en={portfolioConfig.english.technologyCategories[technologyItem.category]}
+								>
+									{technologyItem.category}
+								</p>
 								<p class="tech-name">{technologyItem.name}</p>
 							</div>
 						</article>
@@ -85,7 +92,13 @@ const technologies = portfolioConfig.technologies.flatMap((technologyGroup) =>
 								)
 							}
 							<div>
-								<p class="tech-category">{technologyItem.category}</p>
+								<p
+									class="tech-category"
+									data-i18n-es={technologyItem.category}
+									data-i18n-en={portfolioConfig.english.technologyCategories[technologyItem.category]}
+								>
+									{technologyItem.category}
+								</p>
 								<p class="tech-name">{technologyItem.name}</p>
 							</div>
 						</article>
@@ -106,7 +119,13 @@ const technologies = portfolioConfig.technologies.flatMap((technologyGroup) =>
 						)
 					}
 					<div>
-						<p class="tech-category">{technologyItem.category}</p>
+						<p
+							class="tech-category"
+							data-i18n-es={technologyItem.category}
+							data-i18n-en={portfolioConfig.english.technologyCategories[technologyItem.category]}
+						>
+							{technologyItem.category}
+						</p>
 						<p class="tech-name">{technologyItem.name}</p>
 					</div>
 				</article>

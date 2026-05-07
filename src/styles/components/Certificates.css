@@ -51,13 +51,9 @@
 }
 
 .filter-button[aria-selected="true"] {
-	background: linear-gradient(140deg, #166534, #22c55e);
-	color: #ecfdf3;
+	background: linear-gradient(140deg, #0b355d, #0a66c2);
+	color: #eff6ff;
 	border-color: transparent;
-}
-
-.certificate-count {
-	font-size: 0.9rem;
 }
 
 .certificates-carousel {
@@ -78,8 +74,8 @@
 	scroll-snap-type: x mandatory;
 	padding: 0.2rem 0.15rem 1.4rem;
 	scrollbar-width: thin;
-	scrollbar-color: color-mix(in oklab, var(--glow-strong) 80%, #166534)
-		color-mix(in oklab, var(--bg-surface) 75%, #d1fae5);
+	scrollbar-color: color-mix(in oklab, var(--glow-strong) 80%, #0a66c2)
+		color-mix(in oklab, var(--bg-surface) 75%, #dbeafe);
 	mask-image: linear-gradient(90deg, transparent, black 3%, black 97%, transparent);
 }
 
@@ -88,18 +84,18 @@
 }
 
 .certificates-viewport::-webkit-scrollbar-track {
-	background: color-mix(in oklab, var(--bg-surface) 74%, #d1fae5);
+	background: color-mix(in oklab, var(--bg-surface) 74%, #dbeafe);
 	border-radius: 999px;
 }
 
 .certificates-viewport::-webkit-scrollbar-thumb {
-	background: linear-gradient(140deg, #22c55e, #166534);
+	background: linear-gradient(140deg, #0a66c2, #0b355d);
 	border-radius: 999px;
-	border: 2px solid color-mix(in oklab, var(--bg-surface) 74%, #d1fae5);
+	border: 2px solid color-mix(in oklab, var(--bg-surface) 74%, #dbeafe);
 }
 
 .certificates-viewport::-webkit-scrollbar-thumb:hover {
-	background: linear-gradient(140deg, #16a34a, #14532d);
+	background: linear-gradient(140deg, #1d4ed8, #082f49);
 }
 
 .certificates-track {
@@ -251,5 +247,21 @@
 
 	.certificates-track {
 		grid-auto-columns: minmax(260px, 88vw);
+	}
+}
+
+@media (max-width: 640px) {
+	.certificates-toolbar {
+		padding: 0.7rem;
+		gap: 0.5rem;
+	}
+
+	.filter-button {
+		padding: 0.38rem 0.62rem;
+		font-size: 0.82rem;
+	}
+
+	.certificates-track {
+		grid-auto-columns: minmax(240px, 92vw);
 	}
 }

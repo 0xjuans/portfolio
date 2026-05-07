@@ -1,61 +1,87 @@
+import movingPetsProjectImage from "../assets/img/projects/movingpets.png";
+import ignuxLabProjectImage from "../assets/img/projects/ignuxlab.png";
+import creaWebLabProjectImage from "../assets/img/projects/creaweblab.png";
+import fucofufiProjectImage from "../assets/img/projects/fucofufi.png";
+import cvFileUrl from "../assets/cv/cv_JuanSebastianQuinto.pdf?url";
+import cvIconUrl from "../assets/cv-icon.svg?url";
+
 export const portfolioConfig = {
-	fullName: "Your Full Name",
+	fullName: "Juan Sebastian Quinto",
 	professionalSummary:
-		"Full Stack Developer with 1+ years of experience. Systems Engineering student and Information Systems Analysis and Development Technologist from Bogota, Colombia.",
-	experienceSectionTitle: "Professional Experience",
+		"Desarrollador Full Stack con +2 años de experiencia. Estudiante de Ingeniería de Sistemas y Tecnólogo en Análisis y Desarrollo de Sistemas de Información de Bogotá, Colombia.",
+	experienceSectionTitle: "Experiencia Profesional",
 	experiences: [
 		{
-			role: "Full Stack Developer",
-			company: "Your Company",
-			workMode: "Full Time",
-			location: "City, Country",
-			dateRange: "2024 - Present",
+			role: "Desarrollador Jr",
+			company: "TECSER & CLOUD",
+			workMode: "Tiempo Completo",
+			location: "Bogota, Colombia",
+			dateRange: "Febrero 2026 - Actual",
 			achievements: [
-				"Describe a high-impact project and measurable outcome.",
-				"Describe architecture, performance, or product improvements.",
-				"Describe cross-team collaboration and delivery practices."
+				"Desarrollé una librería de componentes reutilizables en Angular y Tailwind, estandarizando la interfaz de usuario y acelerando el tiempo de desarrollo de nuevas funcionalidades en un 30%.",
+				"Optimicé el rendimiento del backend mediante la implementación de caché y el ajuste de consultas en Spring Data JPA, logrando una reducción del 45% en los tiempos de respuesta de las APIs críticas.",
+				"Implementé un sistema de autenticación y autorización robusto con Spring Security y JWT, garantizando el acceso seguro y segmentado para usuarios internos y externos según su rol.",
+				"Refactoricé la lógica de negocio en la capa de servicios de Java, aplicando principios SOLID para mejorar la mantenibilidad del código y facilitar la escalabilidad del sistema a largo plazo."
 			]
 		},
 		{
-			role: "Systems Analyst",
-			company: "Previous Company",
-			workMode: "Full Time",
-			location: "City, Country",
-			dateRange: "2022 - 2023",
+			role: "Desarrollador Full Stack",
+			company: "Aprendizaje Interactivo",
+			workMode: "Tiempo Completo",
+			location: "Bogotá, Colombia",
+			dateRange: "Marzo 2024 - Presente",
 			achievements: [
-				"Describe requirements analysis and solution alignment.",
-				"Describe documentation, onboarding, or support process impact.",
-				"Describe monitoring, reliability, or security initiatives."
+				"Colaboré en el desarrollo de una plataforma tipo bootcamp para el Ministerio TIC de Colombia.",
+				"Implementé prácticas de arquitectura de información y optimización de experiencia de usuario.",
+				"Lideré la mejora del rendimiento web de la Plataforma principal.",
+				"Construí la página web corporativa con enfoque en UX/UI.",
+				"Implementé Ship/Show/Ask como estrategia de trabajo en GitHub.",
+				"Desarrollé dashboards interactivos en Power BI para análisis de datos."
+			]
+		},
+		{
+			role: "Analista De Sistemas TI",
+			company: "Servioptica",
+			workMode: "Tiempo Completo",
+			location: "Funza, Colombia",
+			dateRange: "Oct 2022 - Abr 2023",
+			achievements: [
+				"Realicé análisis de requerimientos y alineación de soluciones.",
+				"Elaboré documentación técnica detallada.",
+				"Capacité usuarios finales y facilité adopción de herramientas.",
+				"Investigué nuevas tecnologías y tendencias.",
+				"Desarrollé y mantuve sistemas críticos.",
+				"Implementé prácticas de monitoreo y seguridad."
 			]
 		}
 	],
-	educationSectionTitle: "Education",
+	educationSectionTitle: "Formación Académica",
 	education: [
 		{
-			degree: "Systems Engineering",
-			institution: "Your University",
-			dateRange: "2023 - Present"
+			degree: "Ingeniería De Sistemas",
+			institution: "UNIVERSIDAD LIBRE",
+			dateRange: "Enero 2023-Actual"
 		},
 		{
-			degree: "Information Systems Analysis and Development Technologist",
-			institution: "Your Institute",
-			dateRange: "2021 - 2023"
+			degree: "Tecnólogo en Análisis y Desarrollo",
+			institution: "SENA",
+			dateRange: "Enero 2021-Abril 2023"
 		}
 	],
 	complementaryEducationTitle: "Complementary Education",
-	complementaryEducationProvider: "Courses from Platzi and Udemy across multiple areas",
+	complementaryEducationProvider: "Cursos de Platzi y Udemy en múltiples áreas",
 	complementaryEducationCourses: [
-		"Complete Web Development with HTML, CSS, JavaScript, and Frameworks",
-		"Data Analysis Fundamentals with Power BI and SQL",
-		"Advanced Data Visualization and Dashboarding in Power BI",
-		"Data Modeling in Power BI for Decision Making",
-		"Introduction to Cloud Computing with AWS and Azure",
-		"Process Automation with Python",
-		"Software Architecture and Design Patterns",
-		"Web Application Security Fundamentals",
-		"UX/UI Principles for Developers",
-		"Web Application Optimization and Performance",
-		"Advanced Version Control with Git and GitHub"
+		"Desarrollo web completo con HTML, CSS, JavaScript y frameworks",
+		"Fundamentos de análisis de datos con Power BI y SQL",
+		"Visualización de datos avanzada y creación de dashboards en Power BI",
+		"Modelado de datos en Power BI para la toma de decisiones",
+		"Introducción a la computación en la nube con AWS y Azure",
+		"Automatización de procesos con Python",
+		"Arquitectura de software y patrones de diseño",
+		"Fundamentos de seguridad en aplicaciones web",
+		"Principios de UX/UI para desarrolladores",
+		"Optimización y rendimiento de aplicaciones web",
+		"Control de versiones avanzado con Git y GitHub"
 	],
 	certificatesSectionTitle: "Certificados",
 	certificatesFilterLabel: "Filtrar por:",
@@ -141,7 +167,7 @@ export const portfolioConfig = {
 			imagePath: "Cibersecurity/Redes y seguridad de redes.webp"
 		}
 	],
-	technologiesSectionTitle: "Technologies",
+	technologiesSectionTitle: "Tecnologías",
 	technologies: [
 		{
 			category: "Frontend",
@@ -160,55 +186,208 @@ export const portfolioConfig = {
 			items: ["Git", "GitHub", "Docker", "VS Code", "AWS", "Agile/Scrum"]
 		}
 	],
-	projectsSectionTitle: "Featured Projects",
+	projectsSectionTitle: "Proyectos",
 	projects: [
 		{
-			name: "Project Name One",
-			description: "Describe what this project solves and why it matters.",
-			stack: ["Astro", "TypeScript", "Tailwind"],
-			highlight: "Performance + UX",
-			imageUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
-			projectUrl: "https://example.com/project-one",
-			sourceUrl: "https://github.com/your-github-username/project-one"
+			name: "Moving Pets Colombia",
+			description:
+				"Sitio web corporativo para una empresa de transporte profesional de mascotas, con secciones de servicios, proceso, beneficios, galería y contacto.",
+			stack: ["Astro", "JavaScript", "CSS"],
+			imageUrl: movingPetsProjectImage.src,
+			previewMode: "iframe",
+			projectUrl: "https://www.movingpetscol.online/"
 		},
 		{
-			name: "Project Name Two",
-			description: "Describe your technical approach and main outcomes.",
-			stack: ["React", "Node.js", "PostgreSQL"],
-			highlight: "Product + Engineering",
-			imageUrl: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=1200&q=80",
-			projectUrl: "https://example.com/project-two",
-			sourceUrl: "https://github.com/your-github-username/project-two"
+			name: "IGNUXLab",
+			description:
+				"Sitio web corporativo para un laboratorio de innovación tecnológica, con presentación de soluciones, experiencia, noticias y canales de contacto.",
+			stack: ["Astro", "JavaScript", "CSS"],
+			imageUrl: ignuxLabProjectImage.src,
+			previewMode: "iframe",
+			projectUrl: "https://ignuxlab.com/"
 		},
 		{
-			name: "Project Name Three",
-			description: "Describe impact, users, and relevant implementation details.",
-			stack: ["Power BI", "DAX", "Data Modeling"],
-			highlight: "Data + Insights",
-			imageUrl: "https://images.unsplash.com/photo-1551281044-8b8e7f0f29aa?auto=format&fit=crop&w=1200&q=80",
-			projectUrl: "https://example.com/project-three",
-			sourceUrl: "https://github.com/your-github-username/project-three"
+			name: "CreaWebLab",
+			description:
+				"Sitio web profesional para una consultora tecnológica enfocada en desarrollo web a medida, automatizaciones, servicios digitales y captación de clientes.",
+			stack: ["Astro", "JavaScript", "CSS"],
+			imageUrl: creaWebLabProjectImage.src,
+			previewMode: "iframe",
+			projectUrl: "https://www.creaweblab.net/"
+		},
+		{
+			name: "FUCOFUFI",
+			description:
+				"Sitio institucional para una fundación sin ánimo de lucro, con presentación de misión, visión, objetivos, enfoque social y canales de contacto.",
+			stack: ["Astro", "JavaScript", "CSS"],
+			imageUrl: fucofufiProjectImage.src,
+			previewMode: "iframe",
+			projectUrl: "https://www.fucofufi.org/"
 		}
 	],
-	contactEmail: "your.name@domain.com",
+	contactEmail: "juans.quintoh@hotmail.com",
 	socialLinks: [
 		{
 			id: "linkedin",
 			label: "LinkedIn",
-			href: "https://www.linkedin.com/in/your-professional-profile",
+			href: "https://www.linkedin.com/in/juan-quinto/",
 			icon: "https://svgl.app/library/linkedin.svg"
 		},
 		{
 			id: "github",
 			label: "GitHub",
-			href: "https://github.com/your-github-username",
+			href: "https://github.com/0xjuans",
 			icon: "https://svgl.app/library/github_light.svg"
 		},
 		{
 			id: "cv",
 			label: "Ver CV",
-			href: "https://drive.google.com/file/d/your-public-cv-id/view",
-			icon: "https://svgl.app/library/drive.svg"
+			href: cvFileUrl,
+			icon: cvIconUrl
 		}
-	]
+	],
+	english: {
+		professionalSummary:
+			"Full Stack Developer with 2+ years of experience. Systems Engineering student and Technologist in Analysis and Development of Information Systems based in Bogotá, Colombia.",
+		contactLinkLabel: "Contact me",
+		portfolioEyebrow: "Professional portfolio",
+		heroTitlePrefix: "Hi, I'm",
+		experienceEyebrow: "Career path",
+		experienceSectionTitle: "Professional Experience",
+		experiences: [
+			{
+				role: "Junior Developer",
+				workMode: "Full Time",
+				location: "Bogota, Colombia",
+				dateRange: "February 2026 - Present",
+				achievements: [
+					"Developed a reusable component library with Angular and Tailwind, standardizing the user interface and reducing new feature development time by 30%.",
+					"Optimized backend performance by implementing caching and tuning Spring Data JPA queries, reducing critical API response times by 45%.",
+					"Implemented a robust authentication and authorization system with Spring Security and JWT, ensuring secure role-based access for internal and external users.",
+					"Refactored Java service-layer business logic using SOLID principles to improve maintainability and long-term scalability."
+				]
+			},
+			{
+				role: "Full Stack Developer",
+				workMode: "Full Time",
+				location: "Bogotá, Colombia",
+				dateRange: "March 2024 - Present",
+				achievements: [
+					"Contributed to the development of a bootcamp-style platform for Colombia's Ministry of ICT.",
+					"Implemented information architecture practices and user experience improvements.",
+					"Led performance improvements for the main platform.",
+					"Built the corporate website with a UX/UI-focused approach.",
+					"Implemented Ship/Show/Ask as a GitHub workflow strategy.",
+					"Developed interactive Power BI dashboards for data analysis."
+				]
+			},
+			{
+				role: "IT Systems Analyst",
+				workMode: "Full Time",
+				location: "Funza, Colombia",
+				dateRange: "Oct 2022 - Apr 2023",
+				achievements: [
+					"Performed requirements analysis and solution alignment.",
+					"Prepared detailed technical documentation.",
+					"Trained end users and supported tool adoption.",
+					"Researched new technologies and industry trends.",
+					"Developed and maintained critical systems.",
+					"Implemented monitoring and security practices."
+				]
+			}
+		],
+		educationEyebrow: "Education",
+		educationSectionTitle: "Academic Background",
+		educationKicker: "Academic path",
+		education: [
+			{
+				degree: "Systems Engineering",
+				dateRange: "January 2023 - Present"
+			},
+			{
+				degree: "Technologist in Analysis and Development",
+				dateRange: "January 2021 - April 2023"
+			}
+		],
+		complementaryEducationEyebrow: "Continuous specialization",
+		complementaryEducationTitle: "Complementary Education",
+		complementaryEducationProvider: "Platzi and Udemy courses across multiple areas",
+		complementaryEducationCourses: [
+			"Complete web development with HTML, CSS, JavaScript and frameworks",
+			"Data analysis fundamentals with Power BI and SQL",
+			"Advanced data visualization and dashboard creation in Power BI",
+			"Data modeling in Power BI for decision-making",
+			"Introduction to cloud computing with AWS and Azure",
+			"Process automation with Python",
+			"Software architecture and design patterns",
+			"Web application security fundamentals",
+			"UX/UI principles for developers",
+			"Application optimization and performance",
+			"Advanced version control with Git and GitHub"
+		],
+		certificatesEyebrow: "Achievements",
+		certificatesSectionTitle: "Certificates",
+		certificatesIntro: "Curated collection of technical training in software development and cybersecurity.",
+		certificatesFilterLabel: "Filter by:",
+		certificateFilters: {
+			Todos: "All",
+			Programación: "Programming",
+			Ciberseguridad: "Cybersecurity"
+		},
+		certificateUnavailableLabel: "Image unavailable",
+		certificateActionLabel: "View certificate",
+		certificates: [
+			{ category: "Programming", title: "ChatGPT: Result Optimization" },
+			{ category: "Programming", title: "Git and GitHub: Version Control" },
+			{ category: "Programming", title: "Logic: Functions and Lists" },
+			{ category: "Programming", title: "JavaScript: Basic Programming" },
+			{ category: "Programming", title: "Challenge: Secret Friend" },
+			{ category: "Programming", title: "Complete JavaScript Training" },
+			{ category: "Cybersecurity", title: "Foundations of Cybersecurity" },
+			{ category: "Cybersecurity", title: "Assets, Threats, and Vulnerabilities" },
+			{ category: "Cybersecurity", title: "Security Risk Management" },
+			{ category: "Cybersecurity", title: "Linux and SQL" },
+			{ category: "Cybersecurity", title: "Networks and Network Security" }
+		],
+		technologiesSectionTitle: "Technologies",
+		technologyCategories: {
+			Frontend: "Frontend",
+			Backend: "Backend",
+			Databases: "Databases",
+			"Tools and Others": "Tools and Others"
+		},
+		projectsSectionTitle: "Projects",
+		projectsCarouselLabel: "Featured projects",
+		projectsControlsLabel: "Project carousel controls",
+		previousProjectLabel: "Previous project",
+		nextProjectLabel: "Next project",
+		projectPreviewAltPrefix: "Project preview:",
+		livePreviewTitlePrefix: "Live preview of",
+		projectOrdinalLabel: "Project",
+		viewProjectLabel: "View project",
+		codeLabel: "Code",
+		viewProjectDotPrefix: "View",
+		projects: [
+			{
+				description:
+					"Corporate website for a professional pet transportation company, featuring services, process, benefits, gallery and contact sections."
+			},
+			{
+				description:
+					"Corporate website for a technology innovation lab, presenting solutions, experience, news and contact channels."
+			},
+			{
+				description:
+					"Professional website for a technology consultancy focused on custom web development, automation, digital services and client acquisition."
+			},
+			{
+				description:
+					"Institutional website for a nonprofit foundation, presenting its mission, vision, objectives, social impact focus and contact channels."
+			}
+		],
+		socialLinks: {
+			cv: "View CV"
+		},
+		backToTopLabel: "Back to top"
+	}
 } as const;

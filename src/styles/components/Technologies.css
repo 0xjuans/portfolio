@@ -150,7 +150,33 @@
 	.tech-mobile-grid {
 		margin-top: 0.9rem;
 		display: grid;
-		grid-template-columns: 1fr;
+		grid-template-columns: repeat(2, 1fr);
 		gap: 0.45rem;
+	}
+
+	.tech-chip {
+		min-width: 0;
+		width: 100%;
+	}
+}
+
+@media (max-width: 480px) {
+	.tech-mobile-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 640px) {
+	.technology-orbit,
+	.tech-mobile-grid {
+		margin-top: 0.75rem;
+	}
+
+	.tech-chip {
+		padding: 0.45rem 0.56rem;
+	}
+
+	.tech-name {
+		font-size: 0.82rem;
 	}
 }

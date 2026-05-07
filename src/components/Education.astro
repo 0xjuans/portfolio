@@ -7,8 +7,10 @@ const complementaryCourses = portfolioConfig.complementaryEducationCourses;
 
 <section class="education-section" id="educacion">
 	<div class="education-header">
-		<p class="eyebrow">Formación</p>
-		<h2>{portfolioConfig.educationSectionTitle}</h2>
+		<p class="eyebrow" data-i18n-es="Formación" data-i18n-en={portfolioConfig.english.educationEyebrow}>Formación</p>
+		<h2 data-i18n-es={portfolioConfig.educationSectionTitle} data-i18n-en={portfolioConfig.english.educationSectionTitle}>
+			{portfolioConfig.educationSectionTitle}
+		</h2>
 	</div>
 
 	<div class="education-timeline">
@@ -22,46 +24,86 @@ const complementaryCourses = portfolioConfig.complementaryEducationCourses;
 					<div class="education-orbit" aria-hidden="true"></div>
 					<div class="education-glow" aria-hidden="true"></div>
 					<div class="education-body">
-						<p class="education-kicker">Ruta académica</p>
-						<h3>{educationItem.degree}</h3>
+						<p class="education-kicker" data-i18n-es="Ruta académica" data-i18n-en={portfolioConfig.english.educationKicker}>Ruta académica</p>
+						<h3 class="education-title">
+							<span class="study-icon" aria-hidden="true">
+								<svg viewBox="0 0 24 24" fill="none">
+									<path
+										d="M3 8.5L12 4L21 8.5L12 13L3 8.5Z"
+										stroke="currentColor"
+										stroke-width="1.8"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									></path>
+									<path d="M7 10.5V14.5C7 16.3 9.24 17.75 12 17.75C14.76 17.75 17 16.3 17 14.5V10.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+								</svg>
+							</span>
+							<span data-i18n-es={educationItem.degree} data-i18n-en={portfolioConfig.english.education[index].degree}>
+								{educationItem.degree}
+							</span>
+						</h3>
 						<p class="institution">{educationItem.institution}</p>
-						<p class="education-date">{educationItem.dateRange}</p>
+						<p class="education-date" data-i18n-es={educationItem.dateRange} data-i18n-en={portfolioConfig.english.education[index].dateRange}>
+							{educationItem.dateRange}
+						</p>
 					</div>
 				</article>
 			))
 		}
 	</div>
 
-	<section class="complementary-education" aria-label={portfolioConfig.complementaryEducationTitle}>
+	<section
+		class="complementary-education"
+		aria-label={portfolioConfig.complementaryEducationTitle}
+		data-i18n-attr="aria-label"
+		data-i18n-es={portfolioConfig.complementaryEducationTitle}
+		data-i18n-en={portfolioConfig.english.complementaryEducationTitle}
+	>
 		<div class="complementary-head">
-			<p class="eyebrow">Especialización continua</p>
-			<h3>{portfolioConfig.complementaryEducationTitle}</h3>
-			<p>{portfolioConfig.complementaryEducationProvider}</p>
-			<div class="learning-meta">
-				<span>{complementaryCourses.length} cursos clave</span>
-				<span>Actualización constante</span>
-			</div>
+			<p class="eyebrow" data-i18n-es="Especialización continua" data-i18n-en={portfolioConfig.english.complementaryEducationEyebrow}>
+				Especialización continua
+			</p>
+			<h3 data-i18n-es={portfolioConfig.complementaryEducationTitle} data-i18n-en={portfolioConfig.english.complementaryEducationTitle}>
+				{portfolioConfig.complementaryEducationTitle}
+			</h3>
+			<p data-i18n-es={portfolioConfig.complementaryEducationProvider} data-i18n-en={portfolioConfig.english.complementaryEducationProvider}>
+				{portfolioConfig.complementaryEducationProvider}
+			</p>
 		</div>
 		<div class="courses-marquee">
 			<div class="marquee-row marquee-left">
 				{
-					[...complementaryCourses, ...complementaryCourses].map((course) => (
-						<span class="course-pill">{course}</span>
+					[...complementaryCourses, ...complementaryCourses].map((course, courseIndex) => (
+						<span
+							class="course-pill"
+							data-i18n-es={course}
+							data-i18n-en={portfolioConfig.english.complementaryEducationCourses[courseIndex % complementaryCourses.length]}
+						>
+							{course}
+						</span>
 					))
 				}
 			</div>
 			<div class="marquee-row marquee-right">
 				{
-					[...complementaryCourses, ...complementaryCourses].map((course) => (
-						<span class="course-pill">{course}</span>
+					[...complementaryCourses, ...complementaryCourses].map((course, courseIndex) => (
+						<span
+							class="course-pill"
+							data-i18n-es={course}
+							data-i18n-en={portfolioConfig.english.complementaryEducationCourses[courseIndex % complementaryCourses.length]}
+						>
+							{course}
+						</span>
 					))
 				}
 			</div>
 		</div>
 		<div class="courses-cloud">
 			{
-				complementaryCourses.map((course) => (
-					<span class="course-pill static-pill">{course}</span>
+				complementaryCourses.map((course, courseIndex) => (
+					<span class="course-pill static-pill" data-i18n-es={course} data-i18n-en={portfolioConfig.english.complementaryEducationCourses[courseIndex]}>
+						{course}
+					</span>
 				))
 			}
 		</div>

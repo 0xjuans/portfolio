@@ -1,6 +1,26 @@
 .projects-section {
-	margin-top: 2.6rem;
-	padding-bottom: 1rem;
+	position: relative;
+	margin-top: 3rem;
+	padding-bottom: 1.4rem;
+}
+
+.projects-section::before {
+	content: "";
+	position: absolute;
+	inset: 3.2rem -8% auto auto;
+	width: 22rem;
+	height: 22rem;
+	border-radius: 999px;
+	background: radial-gradient(circle, var(--glow-soft), transparent 68%);
+	filter: blur(6px);
+	pointer-events: none;
+}
+
+.projects-header {
+	display: flex;
+	align-items: end;
+	justify-content: space-between;
+	gap: 1rem;
 }
 
 .projects-header h2 {
@@ -8,43 +28,211 @@
 	font-size: clamp(1.6rem, 3vw, 2.4rem);
 }
 
-.projects-grid {
-	margin-top: 1.1rem;
-	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
-	gap: 0.9rem;
+.projects-carousel-controls {
+	display: flex;
+	gap: 0.55rem;
 }
+
+.projects-carousel-button {
+	width: 2.65rem;
+	height: 2.65rem;
+	border: 1px solid var(--border-soft);
+	border-radius: 999px;
+	color: var(--text-primary);
+	background: color-mix(in oklab, var(--bg-surface) 86%, transparent);
+	backdrop-filter: blur(16px);
+	box-shadow: 0 16px 32px -24px color-mix(in oklab, var(--text-primary) 48%, transparent);
+	cursor: pointer;
+	display: grid;
+	place-items: center;
+	transition: transform 180ms ease, border-color 180ms ease, opacity 180ms ease, background-color 180ms ease;
+}
+
+.projects-carousel-button svg {
+	width: 1.1rem;
+	height: 1.1rem;
+}
+
+.projects-carousel-button:hover {
+	transform: translateY(-2px);
+	border-color: color-mix(in oklab, var(--glow-strong) 78%, transparent);
+	background: color-mix(in oklab, var(--bg-surface) 64%, var(--glow-soft));
+}
+
+.projects-carousel-button:disabled {
+	cursor: not-allowed;
+	opacity: 0.45;
+	transform: none;
+}
+
+.projects-carousel {
+	position: relative;
+	margin-top: 1.4rem;
+	padding: 0;
+}
+
+.projects-carousel::before,
+.projects-carousel::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 3rem;
+	z-index: 3;
+	width: min(8vw, 5rem);
+	pointer-events: none;
+}
+
+.projects-carousel::before {
+	left: 0;
+	background: linear-gradient(90deg, var(--bg-primary), transparent);
+}
+
+.projects-carousel::after {
+	right: 0;
+	background: linear-gradient(270deg, var(--bg-primary), transparent);
+}
+
+.projects-track {
+	display: flex;
+	gap: clamp(1rem, 3vw, 1.6rem);
+	align-items: stretch;
+	counter-reset: proj-num;
+	background: transparent;
+	box-shadow: none;
+	overflow-x: auto;
+	overflow-y: hidden;
+	padding: 0.5rem max(1rem, calc((100% - min(980px, 72vw)) / 2)) 1.25rem;
+	scroll-behavior: smooth;
+	scroll-padding-inline: max(1rem, calc((100% - min(980px, 72vw)) / 2));
+	scroll-snap-type: x mandatory;
+	scrollbar-width: none;
+}
+
+.projects-track::-webkit-scrollbar {
+	display: none;
+}
+
+.projects-track:focus-visible {
+	outline: 2px solid color-mix(in oklab, var(--glow-strong) 80%, transparent);
+	outline-offset: 0.35rem;
+	border-radius: 1.4rem;
+}
+
+/* ── Project card ─────────────────────────────────────── */
 
 .project-card {
 	position: relative;
-	overflow: hidden;
+	overflow: visible;
 	display: grid;
-	grid-template-rows: 170px 1fr auto;
-	border-radius: 1rem;
-	border: 1px solid var(--border-soft);
-	background: color-mix(in oklab, var(--bg-surface) 87%, transparent);
+	grid-template-rows: clamp(340px, 36vw, 430px) 1fr;
+	flex: 0 0 min(980px, 72vw);
+	scroll-snap-align: center;
+	border: 0;
+	background: transparent;
+	box-shadow: none;
+	isolation: isolate;
+	min-height: 560px;
+	opacity: 0.78;
+	transform: scale(0.95);
+	transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), opacity 260ms ease, box-shadow 280ms ease;
+}
+
+.project-card::before {
+	content: none;
+}
+
+/* "</>" badge top-right corner */
+.project-card::after {
+	content: "</>";
+	position: absolute;
+	right: 1rem;
+	top: 0.85rem;
+	z-index: 5;
+	color: rgba(240, 253, 244, 0.9);
+	font-family: "Cascadia Code", "Fira Code", Consolas, monospace;
+	font-size: 0.72rem;
+	font-weight: 800;
+	letter-spacing: 0.08em;
+	padding: 0.28rem 0.48rem;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 999px;
+	background: rgba(0, 0, 0, 0.32);
 	backdrop-filter: blur(10px);
-	min-height: 430px;
-	transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.project-card.is-active {
+	opacity: 1;
+	transform: scale(1);
+	box-shadow: none;
 }
 
 .project-card:hover {
-	transform: translateY(-4px);
-	border-color: color-mix(in oklab, var(--glow-strong) 78%, transparent);
-	box-shadow: 0 20px 40px -28px color-mix(in oklab, var(--glow-strong) 85%, transparent);
+	opacity: 1;
+	transform: scale(1) translateY(-3px);
 }
+
+/* ── Media (image area) ───────────────────────────────── */
 
 .project-media {
 	margin: 0;
 	position: relative;
+	z-index: 1;
 	overflow: hidden;
+	min-height: 0;
+	border: 0;
+	border-bottom: 0;
+	border-radius: 0;
+	background:
+		linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+		#07111f;
+	background-size: 28px 28px;
+	transition: border-color 280ms ease, box-shadow 320ms ease;
 }
 
+/* Top accent gradient line — animates in when card is active */
+.project-media::before {
+	content: "";
+	position: absolute;
+	inset: 0 0 auto;
+	height: 2.5px;
+	z-index: 4;
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		#0a66c2 16%,
+		#38bdf8 42%,
+		#60a5fa 50%,
+		#38bdf8 58%,
+		#0a66c2 84%,
+		transparent 100%
+	);
+	opacity: 0;
+	transition: opacity 380ms ease;
+}
+
+.project-card.is-active .project-media::before {
+	opacity: 1;
+}
+
+.project-card.is-active .project-media {
+	border-color: transparent;
+}
+
+/* Overlay sheen */
 .project-media::after {
 	content: "";
 	position: absolute;
 	inset: 0;
-	background: linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.5));
+	background:
+		linear-gradient(180deg, rgba(7, 17, 31, 0.04), rgba(7, 17, 31, 0.24)),
+		linear-gradient(115deg, rgba(10, 102, 194, 0.08), transparent 42%),
+		radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.2), transparent 30%),
+		radial-gradient(circle at 78% 82%, rgba(7, 17, 31, 0.22), transparent 45%);
+}
+
+.project-media-live::after {
+	display: none;
 }
 
 .project-media img {
@@ -52,40 +240,111 @@
 	height: 100%;
 	object-fit: cover;
 	display: block;
-	transform: scale(1.04);
-	transition: transform 320ms ease;
+	filter: saturate(0.96) contrast(1.04) brightness(0.98);
+	transform: scale(1.03);
+	transition: transform 380ms ease, filter 380ms ease;
+}
+
+.project-live-preview {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	width: 286%;
+	height: 286%;
+	border: 0;
+	background: #ffffff;
+	pointer-events: none;
+	transform: scale(0.35);
+	transform-origin: top left;
 }
 
 .project-card:hover .project-media img {
-	transform: scale(1.1);
+	filter: saturate(1.06) contrast(1.06) brightness(1.01);
+	transform: scale(1.09);
 }
 
 .project-media figcaption {
 	position: absolute;
-	left: 0.75rem;
-	bottom: 0.65rem;
+	left: 0.9rem;
+	bottom: 0.85rem;
 	z-index: 2;
 	color: #f0fdf4;
 	font-size: 0.72rem;
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
-	padding: 0.25rem 0.45rem;
+	padding: 0.34rem 0.58rem;
 	border-radius: 999px;
 	border: 1px solid rgba(255, 255, 255, 0.25);
-	background: rgba(0, 0, 0, 0.24);
+	background: rgba(0, 0, 0, 0.32);
+	backdrop-filter: blur(10px);
 }
+
+/* ── Floating glow orb ────────────────────────────────── */
 
 .project-aura {
 	position: absolute;
-	inset: auto -20% -55% auto;
-	width: 220px;
-	height: 220px;
+	inset: auto -18% -42% auto;
+	z-index: -1;
+	width: 260px;
+	height: 260px;
 	background: radial-gradient(circle, var(--glow-soft), transparent 72%);
 	pointer-events: none;
+	animation: project-aura-float 6.4s ease-in-out infinite;
+}
+
+@keyframes project-aura-float {
+	0%, 100% { transform: translate(0, 0); }
+	50%       { transform: translate(-18px, -12px); }
+}
+
+/* ── Card body (glass panel below image) ─────────────── */
+
+.project-body {
+	counter-increment: proj-num;
+	position: relative;
+	z-index: 1;
+	overflow: visible;
+	display: flex;
+	flex-direction: column;
+	border: 0;
+	background: transparent;
+	backdrop-filter: none;
+	box-shadow: none;
+}
+
+.project-card.is-active .project-body {
+	box-shadow: none;
+}
+
+/* Decorative watermark number */
+.project-body::before {
+	content: none;
 }
 
 .project-content {
-	padding: 0.95rem 1rem 0.2rem;
+	position: relative;
+	z-index: 1;
+	padding: 1.25rem 1.5rem 0.3rem;
+}
+
+.project-kicker {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 1rem;
+}
+
+.project-kicker span {
+	width: fit-content;
+	padding: 0.3rem 0.6rem;
+	border: 1px solid color-mix(in oklab, var(--glow-strong) 26%, var(--border-soft));
+	border-radius: 999px;
+	color: color-mix(in oklab, var(--text-secondary) 88%, #0a66c2);
+	background: color-mix(in oklab, var(--bg-accent) 52%, var(--bg-surface));
+	font-size: 0.7rem;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
 }
 
 .project-highlight {
@@ -97,47 +356,172 @@
 }
 
 .project-card h3 {
-	margin: 0.55rem 0 0;
-	font-size: 1.12rem;
+	margin: 0.9rem 0 0;
+	font-size: clamp(1.55rem, 2.6vw, 2.35rem);
+	line-height: 1.08;
+	letter-spacing: -0.045em;
+}
+
+.project-card h3 a {
+	color: inherit;
+	text-decoration: none;
+	transition: color 200ms ease;
+}
+
+.project-card.is-active h3 a {
+	background: linear-gradient(
+		135deg,
+		var(--text-primary) 40%,
+		color-mix(in oklab, var(--text-secondary) 80%, #38bdf8) 100%
+	);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+.project-card h3 a::after {
+	content: " ↗";
+	font-size: 0.72em;
+	opacity: 0;
+	transition: opacity 180ms ease;
+	-webkit-text-fill-color: var(--text-secondary);
+}
+
+.project-card:hover h3 a::after {
+	opacity: 1;
 }
 
 .project-description {
-	margin: 0.65rem 0 0;
-	line-height: 1.5;
+	max-width: 48rem;
+	margin: 0.7rem 0 0;
+	font-size: clamp(0.95rem, 1.2vw, 1.06rem);
+	line-height: 1.68;
 	color: var(--text-secondary);
 }
 
 .project-stack {
-	margin-top: 0.85rem;
+	margin-top: 1.1rem;
 	display: flex;
 	flex-wrap: wrap;
-	gap: 0.45rem;
+	gap: 0.42rem;
 }
 
 .project-stack span {
-	padding: 0.32rem 0.56rem;
+	padding: 0.38rem 0.7rem;
 	border-radius: 999px;
-	border: 1px solid var(--border-soft);
-	font-size: 0.76rem;
-	background: color-mix(in oklab, var(--bg-surface) 70%, transparent);
+	border: 1px solid color-mix(in oklab, var(--glow-strong) 28%, var(--border-soft));
+	font-size: 0.78rem;
+	font-weight: 650;
+	background: color-mix(in oklab, var(--bg-surface) 68%, var(--bg-accent));
+	box-shadow:
+		inset 0 1px 0 rgba(255, 255, 255, 0.28),
+		0 1px 3px -1px rgba(10, 102, 194, 0.14);
+	color: color-mix(in oklab, var(--text-primary) 84%, #0a66c2);
+	transition: border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+}
+
+.project-card:hover .project-stack span {
+	border-color: color-mix(in oklab, var(--glow-strong) 46%, var(--border-soft));
+	box-shadow:
+		inset 0 1px 0 rgba(255, 255, 255, 0.3),
+		0 2px 6px -2px rgba(10, 102, 194, 0.2);
 }
 
 .project-links {
-	margin-top: 0.7rem;
-	padding: 0 1rem 1rem;
+	position: relative;
+	z-index: 1;
+	margin-top: auto;
+	padding: 0.75rem 1.4rem 1.5rem;
 	display: flex;
 	gap: 0.6rem;
+	align-items: center;
+	flex-wrap: wrap;
 }
+
+/* ── Dark mode overrides ──────────────────────────────── */
+
+:root.dark .project-body {
+	background: transparent;
+}
+
+:root.dark .project-card {
+	box-shadow: none;
+}
+
+:root.dark .project-card.is-active {
+	box-shadow: none;
+}
+
+:root.dark .project-card.is-active .project-body {
+	box-shadow: none;
+}
+
+/* ── Carousel dots ────────────────────────────────────── */
+
+.projects-carousel-dots {
+	display: flex;
+	justify-content: center;
+	gap: 0.55rem;
+	margin-top: -0.05rem;
+}
+
+.projects-carousel-dots button {
+	position: relative;
+	overflow: hidden;
+	min-width: 2.9rem;
+	height: 0.58rem;
+	border: 0;
+	border-radius: 999px;
+	background: color-mix(in oklab, var(--border-soft) 64%, transparent);
+	cursor: pointer;
+	transition: min-width 220ms ease, background-color 220ms ease, transform 180ms ease;
+}
+
+.projects-carousel-dots button::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	background: linear-gradient(90deg, #0a66c2, #38bdf8);
+	transform: scaleX(0);
+	transform-origin: left center;
+	transition: transform 260ms ease;
+}
+
+.projects-carousel-dots button:hover {
+	transform: translateY(-1px);
+}
+
+.projects-carousel-dots button[aria-current="true"] {
+	min-width: 4.2rem;
+	background: color-mix(in oklab, var(--glow-soft) 72%, transparent);
+}
+
+.projects-carousel-dots button[aria-current="true"]::before {
+	transform: scaleX(1);
+}
+
+.projects-carousel-dots span {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+}
+
+/* ── Links ────────────────────────────────────────────── */
 
 .project-link {
 	text-decoration: none;
-	font-size: 0.84rem;
-	padding: 0.52rem 0.74rem;
-	border-radius: 0.65rem;
+	font-size: 0.9rem;
+	font-weight: 700;
+	padding: 0.76rem 1.1rem;
+	border-radius: 999px;
 	border: 1px solid var(--border-soft);
 	color: var(--text-primary);
-	background: color-mix(in oklab, var(--bg-surface) 75%, transparent);
-	transition: transform 170ms ease, border-color 170ms ease, background-color 170ms ease;
+	background: color-mix(in oklab, var(--bg-surface) 78%, transparent);
+	transition: transform 170ms ease, border-color 170ms ease, background-color 170ms ease, box-shadow 170ms ease;
 	display: inline-flex;
 	align-items: center;
 	gap: 0.45rem;
@@ -149,28 +533,89 @@
 }
 
 .project-link:hover {
-	transform: translateY(-1px);
+	transform: translateY(-2px);
 	border-color: color-mix(in oklab, var(--glow-strong) 80%, transparent);
+	box-shadow: 0 6px 22px -8px color-mix(in oklab, var(--glow-strong) 42%, transparent);
 }
 
 .live-link {
 	background: linear-gradient(
 		140deg,
-		color-mix(in oklab, var(--bg-surface) 60%, #ecfdf3),
-		color-mix(in oklab, var(--bg-surface) 78%, transparent)
+		color-mix(in oklab, var(--glow-strong) 34%, #ffffff),
+		color-mix(in oklab, var(--bg-surface) 92%, transparent)
 	);
 }
 
 .code-link {
 	background: linear-gradient(
 		140deg,
-		color-mix(in oklab, var(--bg-surface) 62%, #d1fae5),
+		color-mix(in oklab, var(--bg-surface) 62%, #dbeafe),
 		color-mix(in oklab, var(--bg-surface) 75%, transparent)
 	);
 }
 
+/* ── Responsive ───────────────────────────────────────── */
+
 @media (max-width: 980px) {
-	.projects-grid {
-		grid-template-columns: 1fr;
+	.projects-track {
+		padding-inline: 0.2rem;
+		scroll-padding-inline: 0.2rem;
+	}
+
+	.project-card {
+		flex-basis: min(760px, 88vw);
+	}
+}
+
+@media (max-width: 620px) {
+	.projects-header {
+		align-items: start;
+		flex-direction: column;
+	}
+
+	.projects-carousel-controls {
+		width: 100%;
+		justify-content: flex-end;
+	}
+}
+
+@media (max-width: 640px) {
+	.projects-carousel::before,
+	.projects-carousel::after {
+		display: none;
+	}
+
+	.projects-track {
+		margin-inline: -0.45rem;
+		padding-inline: 0.45rem;
+	}
+
+	.project-card {
+		grid-template-rows: 220px 1fr;
+		flex-basis: calc(100vw - 2.4rem);
+		min-height: 0;
+		transform: scale(0.98);
+	}
+
+	.project-live-preview {
+		display: none;
+	}
+
+	.project-content {
+		padding: 0.9rem 0.9rem 0.25rem;
+	}
+
+	.project-links {
+		padding: 0.5rem 0.9rem 1rem;
+		flex-direction: column;
+	}
+
+	.project-link {
+		width: 100%;
+		justify-content: center;
+	}
+
+	.project-body::before {
+		font-size: 6rem;
 	}
 }

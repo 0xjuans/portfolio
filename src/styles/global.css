@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
 :root {
-	--bg-primary: #f2fff5;
-	--bg-secondary: #ddfce7;
+	--bg-primary: #f4f7fb;
+	--bg-secondary: #e8eef7;
 	--bg-surface: rgba(255, 255, 255, 0.78);
-	--bg-accent: #c7f9d4;
-	--text-primary: #062912;
-	--text-secondary: #24603d;
-	--border-soft: rgba(46, 140, 87, 0.24);
-	--glow-strong: rgba(34, 197, 94, 0.35);
-	--glow-soft: rgba(110, 231, 147, 0.22);
+	--bg-accent: #dbeafe;
+	--text-primary: #0f172a;
+	--text-secondary: #335b86;
+	--border-soft: rgba(10, 102, 194, 0.24);
+	--glow-strong: rgba(10, 102, 194, 0.36);
+	--glow-soft: rgba(96, 165, 250, 0.22);
 }
 
 :root.dark {
-	--bg-primary: #03140c;
-	--bg-secondary: #072618;
-	--bg-surface: rgba(7, 38, 24, 0.68);
-	--bg-accent: #0d3b25;
-	--text-primary: #dcffe8;
-	--text-secondary: #95d5ae;
-	--border-soft: rgba(110, 231, 147, 0.3);
-	--glow-strong: rgba(34, 197, 94, 0.48);
-	--glow-soft: rgba(20, 83, 45, 0.42);
+	--bg-primary: #07111f;
+	--bg-secondary: #0b1f3a;
+	--bg-surface: rgba(10, 25, 47, 0.72);
+	--bg-accent: #12345a;
+	--text-primary: #eaf4ff;
+	--text-secondary: #a9c7e8;
+	--border-soft: rgba(96, 165, 250, 0.28);
+	--glow-strong: rgba(10, 102, 194, 0.52);
+	--glow-soft: rgba(30, 64, 175, 0.42);
 }
 
 *,
@@ -41,4 +41,132 @@ body {
 		radial-gradient(circle at 85% 15%, var(--glow-soft), transparent 34%),
 		linear-gradient(165deg, var(--bg-primary), var(--bg-secondary));
 	transition: background 300ms ease, color 300ms ease;
+	overflow-x: hidden;
+}
+
+body {
+	position: relative;
+	isolation: isolate;
+}
+
+body > :not(.motion-background) {
+	position: relative;
+	z-index: 1;
+}
+
+.motion-background {
+	position: fixed;
+	inset: 0;
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	opacity: 0.72;
+}
+
+:root.dark .motion-background {
+	opacity: 0.58;
+}
+
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 5rem;
+}
+
+[id] {
+	scroll-margin-top: 5rem;
+}
+
+html {
+	scrollbar-width: thin;
+	scrollbar-color: color-mix(in oklab, var(--glow-strong) 82%, #0a66c2)
+		color-mix(in oklab, var(--bg-surface) 75%, #dbeafe);
+}
+
+html::-webkit-scrollbar {
+	width: 11px;
+	height: 11px;
+}
+
+html::-webkit-scrollbar-track {
+	background: color-mix(in oklab, var(--bg-surface) 76%, #dbeafe);
+}
+
+html::-webkit-scrollbar-thumb {
+	background: linear-gradient(145deg, #0a66c2, #0b355d);
+	border-radius: 999px;
+	border: 2px solid color-mix(in oklab, var(--bg-surface) 76%, #dbeafe);
+}
+
+html::-webkit-scrollbar-thumb:hover {
+	background: linear-gradient(145deg, #1d4ed8, #082f49);
+}
+
+/* ── Entry animation keyframes (one-shot, carousel & special elements) ── */
+@keyframes fade-in-up {
+	from { opacity: 0; transform: translateY(22px); }
+	to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in-down {
+	from { opacity: 0; transform: translateY(-24px); }
+	to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in-right {
+	from { opacity: 0; transform: translateX(28px); }
+	to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes scale-up {
+	from { opacity: 0; transform: scale(0.55); }
+	to   { opacity: 1; transform: scale(1); }
+}
+@keyframes rail-grow {
+	from { transform: scaleY(0); }
+	to   { transform: scaleY(1); }
+}
+
+/* Utility classes — added by animateOnView (one-shot) */
+.anim-fade-up    { animation: fade-in-up    0.65s ease both; }
+.anim-fade-right { animation: fade-in-right 0.65s ease both; }
+.anim-scale-up   { animation: scale-up      0.45s ease both; }
+.anim-rail-grow  { animation: rail-grow     0.75s ease both; transform-origin: top center; }
+
+/* ── Scroll reveal — bidirectional entrance & exit ────── */
+.sr {
+	opacity: 0;
+	will-change: opacity, transform;
+	transition:
+		opacity  0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+		transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Suppress transitions during the initial observation pass */
+.sr.sr-init { transition: none; }
+
+/* Initial hidden states per variant */
+.sr-up    { transform: translateY(32px); }
+.sr-down  { transform: translateY(-32px); }
+.sr-right { transform: translateX(36px); }
+.sr-left  { transform: translateX(-36px); }
+.sr-scale { transform: scale(0.87); }
+
+/* Visible state */
+.sr.is-visible {
+	opacity: 1;
+	transform: none;
+}
+
+/* Exit upward (element left from the top of viewport) */
+.sr.sr-exit-up:not(.is-visible) {
+	transform: translateY(-28px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html { scroll-behavior: auto; }
+	.motion-background { display: none; }
+	.sr { transition: none; opacity: 1; transform: none; }
+	*, *::before, *::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
 }

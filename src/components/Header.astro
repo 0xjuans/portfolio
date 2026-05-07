@@ -3,7 +3,19 @@ import "../styles/components/Header.css";
 ---
 
 <header class="site-header">
-	<nav class="nav-list" aria-label="Primary navigation">
+	<button
+		id="mobile-menu-toggle"
+		class="mobile-menu-toggle"
+		type="button"
+		aria-label="Abrir menú de navegación"
+		aria-controls="primary-nav"
+		aria-expanded="false"
+	>
+		<span></span>
+		<span></span>
+		<span></span>
+	</button>
+	<nav id="primary-nav" class="nav-list" aria-label="Primary navigation">
 		<a href="#inicio" data-i18n-es="Inicio" data-i18n-en="Home">Inicio</a>
 		<a href="#experiencia" data-i18n-es="Experiencia" data-i18n-en="Experience">Experiencia</a>
 		<a href="#projects" data-i18n-es="Proyectos" data-i18n-en="Projects">Proyectos</a>
@@ -12,35 +24,37 @@ import "../styles/components/Header.css";
 		<a href="#certificados" data-i18n-es="Certificados" data-i18n-en="Certificates">Certificados</a>
 		<a href="#contact" data-i18n-es="Contacto" data-i18n-en="Contact">Contacto</a>
 	</nav>
-	<button id="language-toggle" class="language-toggle" type="button" aria-label="Switch language">
-		<span class="language-toggle-track">
-			<span class="language-chip">ES</span>
-			<span class="language-chip">EN</span>
-			<span class="language-indicator"></span>
-		</span>
-	</button>
-	<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color mode">
-		<span class="theme-toggle-track" aria-hidden="true">
-			<svg class="theme-icon sun-icon" viewBox="0 0 24 24" fill="none">
-				<circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"></circle>
-				<path
-					d="M12 2.5V5.2M12 18.8V21.5M21.5 12H18.8M5.2 12H2.5M18.7 5.3L16.8 7.2M7.2 16.8L5.3 18.7M18.7 18.7L16.8 16.8M7.2 7.2L5.3 5.3"
-					stroke="currentColor"
-					stroke-width="1.8"
-					stroke-linecap="round"
-				></path>
-			</svg>
-			<svg class="theme-icon moon-icon" viewBox="0 0 24 24" fill="none">
-				<path
-					d="M20 15.6A8.9 8.9 0 1 1 8.4 4a7.2 7.2 0 1 0 11.6 11.6Z"
-					stroke="currentColor"
-					stroke-width="1.8"
-					stroke-linejoin="round"
-				></path>
-			</svg>
-			<span class="theme-toggle-thumb"></span>
-		</span>
-	</button>
+	<div class="header-controls">
+		<button id="language-toggle" class="language-toggle" type="button" aria-label="Switch language">
+			<span class="language-toggle-track">
+				<span class="language-chip">ES</span>
+				<span class="language-chip">EN</span>
+				<span class="language-indicator"></span>
+			</span>
+		</button>
+		<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color mode">
+			<span class="theme-toggle-track" aria-hidden="true">
+				<svg class="theme-icon sun-icon" viewBox="0 0 24 24" fill="none">
+					<circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"></circle>
+					<path
+						d="M12 2.5V5.2M12 18.8V21.5M21.5 12H18.8M5.2 12H2.5M18.7 5.3L16.8 7.2M7.2 16.8L5.3 18.7M18.7 18.7L16.8 16.8M7.2 7.2L5.3 5.3"
+						stroke="currentColor"
+						stroke-width="1.8"
+						stroke-linecap="round"
+					></path>
+				</svg>
+				<svg class="theme-icon moon-icon" viewBox="0 0 24 24" fill="none">
+					<path
+						d="M20 15.6A8.9 8.9 0 1 1 8.4 4a7.2 7.2 0 1 0 11.6 11.6Z"
+						stroke="currentColor"
+						stroke-width="1.8"
+						stroke-linejoin="round"
+					></path>
+				</svg>
+				<span class="theme-toggle-thumb"></span>
+			</span>
+		</button>
+	</div>
 </header>
 
 <script>

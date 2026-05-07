@@ -9,7 +9,7 @@ import "../styles/components/Welcome.css";
 import { portfolioConfig } from "../config/portfolio.template";
 ---
 
-<div class="creative-shell">
+<div class="creative-shell" id="inicio">
 	<div class="ambient-layer" aria-hidden="true">
 		<span class="orb orb-a"></span>
 		<span class="orb orb-b"></span>
@@ -20,18 +20,41 @@ import { portfolioConfig } from "../config/portfolio.template";
 	<div class="content">
 		<Header />
 		<main class="hero" id="about">
-			<p class="eyebrow">Portafolio profesional</p>
-			<h1>Hola, soy {portfolioConfig.fullName}</h1>
-			<p class="subtitle">{portfolioConfig.professionalSummary}</p>
+			<p class="eyebrow" data-i18n-es="Portafolio profesional" data-i18n-en={portfolioConfig.english.portfolioEyebrow}>
+				Portafolio profesional
+			</p>
+			<h1
+				id="hero-title"
+				data-prefix-es="Hola, soy "
+				data-prefix-en={`${portfolioConfig.english.heroTitlePrefix} `}
+				data-name={portfolioConfig.fullName}
+			>
+				<span class="hero-prefix">Hola, soy </span><span class="typed-name"></span><span class="cursor" aria-hidden="true">|</span>
+			</h1>
+			<p class="subtitle" data-i18n-es={portfolioConfig.professionalSummary} data-i18n-en={portfolioConfig.english.professionalSummary}>
+				{portfolioConfig.professionalSummary}
+			</p>
 			<div class="actions" id="contact">
-				<a href={`mailto:${portfolioConfig.contactEmail}`} class="contact-link">Contáctame</a>
+				<a
+					href={`mailto:${portfolioConfig.contactEmail}`}
+					class="contact-link"
+					data-i18n-es="Contáctame"
+					data-i18n-en={portfolioConfig.english.contactLinkLabel}
+				>
+					Contáctame
+				</a>
 			</div>
 			<div class="social-actions">
 				{
 					portfolioConfig.socialLinks.map((socialLink) => (
 						<a href={socialLink.href} class="social-link" target="_blank" rel="noopener noreferrer">
 							<img src={socialLink.icon} alt={`${socialLink.label} icon`} loading="lazy" />
-							{socialLink.label}
+							<span
+								data-i18n-es={socialLink.label}
+								data-i18n-en={socialLink.id === "cv" ? portfolioConfig.english.socialLinks.cv : socialLink.label}
+							>
+								{socialLink.label}
+							</span>
 						</a>
 					))
 				}
@@ -43,6 +66,20 @@ import { portfolioConfig } from "../config/portfolio.template";
 		<Technologies />
 		<Projects />
 	</div>
+	<button
+		class="back-to-top"
+		type="button"
+		aria-label="Volver arriba"
+		title="Volver arriba"
+		data-i18n-attr="aria-label,title"
+		data-i18n-es="Volver arriba"
+		data-i18n-en={portfolioConfig.english.backToTopLabel}
+	>
+		<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+			<path d="M12 18V6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+			<path d="M7 11L12 6L17 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+		</svg>
+	</button>
 </div>
 
 <script>

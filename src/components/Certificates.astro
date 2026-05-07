@@ -12,36 +12,70 @@ const filters = ["Todos", ...new Set(portfolioConfig.certificates.map((certifica
 
 <section class="certificates-section" id="certificados">
 	<div class="certificates-header">
-		<p class="eyebrow">Logros</p>
-		<h2>{portfolioConfig.certificatesSectionTitle}</h2>
-		<p class="certificates-intro">Colección curada de formación técnica en desarrollo de software y ciberseguridad.</p>
+		<p class="eyebrow" data-i18n-es="Logros" data-i18n-en={portfolioConfig.english.certificatesEyebrow}>Logros</p>
+		<h2 data-i18n-es={portfolioConfig.certificatesSectionTitle} data-i18n-en={portfolioConfig.english.certificatesSectionTitle}>
+			{portfolioConfig.certificatesSectionTitle}
+		</h2>
+		<p
+			class="certificates-intro"
+			data-i18n-es="Colección curada de formación técnica en desarrollo de software y ciberseguridad."
+			data-i18n-en={portfolioConfig.english.certificatesIntro}
+		>
+			Colección curada de formación técnica en desarrollo de software y ciberseguridad.
+		</p>
 	</div>
 
 	<div class="certificates-toolbar">
-		<p>{portfolioConfig.certificatesFilterLabel}</p>
-		<div class="filters" role="tablist" aria-label="Certificados por categoría">
+		<p data-i18n-es={portfolioConfig.certificatesFilterLabel} data-i18n-en={portfolioConfig.english.certificatesFilterLabel}>
+			{portfolioConfig.certificatesFilterLabel}
+		</p>
+		<div
+			class="filters"
+			role="tablist"
+			aria-label="Certificados por categoría"
+			data-i18n-attr="aria-label"
+			data-i18n-es="Certificados por categoría"
+			data-i18n-en="Certificates by category"
+		>
 			{
 				filters.map((filter, index) => (
 					<button class="filter-button" data-filter={filter} role="tab" aria-selected={index === 0 ? "true" : "false"}>
-						{filter}
+						<span data-i18n-es={filter} data-i18n-en={portfolioConfig.english.certificateFilters[filter]}>
+							{filter}
+						</span>
 					</button>
 				))
 			}
 		</div>
-		<p class="certificate-count">
-			<span data-certificate-count>{portfolioConfig.certificates.length}</span> certificados encontrados
-		</p>
 	</div>
 
 	<div class="certificates-carousel">
 		<div class="carousel-controls">
-			<button class="carousel-nav" data-carousel-prev aria-label="Ver certificados anteriores">‹</button>
-			<button class="carousel-nav" data-carousel-next aria-label="Ver más certificados">›</button>
+			<button
+				class="carousel-nav"
+				data-carousel-prev
+				aria-label="Ver certificados anteriores"
+				data-i18n-attr="aria-label"
+				data-i18n-es="Ver certificados anteriores"
+				data-i18n-en="View previous certificates"
+			>
+				‹
+			</button>
+			<button
+				class="carousel-nav"
+				data-carousel-next
+				aria-label="Ver más certificados"
+				data-i18n-attr="aria-label"
+				data-i18n-es="Ver más certificados"
+				data-i18n-en="View more certificates"
+			>
+				›
+			</button>
 		</div>
 		<div class="certificates-viewport" data-carousel-viewport>
 			<div class="certificates-track">
 				{
-					portfolioConfig.certificates.map((certificate) => {
+					portfolioConfig.certificates.map((certificate, certificateIndex) => {
 						const imageKey = `../assets/certificates/${certificate.imagePath}`;
 						const imageAsset = certificateImages[imageKey] as string | { src?: string } | undefined;
 						const imageUrl =
@@ -52,19 +86,40 @@ const filters = ["Todos", ...new Set(portfolioConfig.certificates.map((certifica
 								<div class="certificate-media">
 									{imageUrl ? (
 										<>
-											<img src={imageUrl} alt={`Certificado: ${certificate.title}`} loading="lazy" />
+											<img
+												src={imageUrl}
+												alt={`Certificado: ${certificate.title}`}
+												loading="lazy"
+												data-i18n-attr="alt"
+												data-i18n-es={`Certificado: ${certificate.title}`}
+												data-i18n-en={`Certificate: ${portfolioConfig.english.certificates[certificateIndex].title}`}
+											/>
 											<div class="certificate-overlay" aria-hidden="true"></div>
 										</>
 									) : (
-										<div class="certificate-fallback">Imagen no disponible</div>
+										<div
+											class="certificate-fallback"
+											data-i18n-es="Imagen no disponible"
+											data-i18n-en={portfolioConfig.english.certificateUnavailableLabel}
+										>
+											Imagen no disponible
+										</div>
 									)}
 								</div>
 								<div class="certificate-content">
 									<div class="certificate-meta">
-										<p class="certificate-category">{certificate.category}</p>
+										<p
+											class="certificate-category"
+											data-i18n-es={certificate.category}
+											data-i18n-en={portfolioConfig.english.certificates[certificateIndex].category}
+										>
+											{certificate.category}
+										</p>
 										<p class="certificate-date">{certificate.date}</p>
 									</div>
-									<h3>{certificate.title}</h3>
+									<h3 data-i18n-es={certificate.title} data-i18n-en={portfolioConfig.english.certificates[certificateIndex].title}>
+										{certificate.title}
+									</h3>
 									<p class="certificate-issuer">{certificate.issuer}</p>
 									{imageUrl && (
 										<a class="certificate-action" href={imageUrl} target="_blank" rel="noopener noreferrer">
@@ -77,7 +132,7 @@ const filters = ["Todos", ...new Set(portfolioConfig.certificates.map((certifica
 													stroke-linejoin="round"
 												></path>
 											</svg>
-											Ver certificado
+											<span data-i18n-es="Ver certificado" data-i18n-en={portfolioConfig.english.certificateActionLabel}>Ver certificado</span>
 										</a>
 									)}
 								</div>
