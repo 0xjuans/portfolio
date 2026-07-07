@@ -1,3 +1,4 @@
+import formCraftProjectImage from "../assets/img/projects/formcraft.png";
 import movingPetsProjectImage from "../assets/img/projects/movingpets.png";
 import ignuxLabProjectImage from "../assets/img/projects/ignuxlab.png";
 import creaWebLabProjectImage from "../assets/img/projects/creaweblab.png";
@@ -189,6 +190,15 @@ export const portfolioConfig = {
 	projectsSectionTitle: "Proyectos",
 	projects: [
 		{
+			name: "FormCraft",
+			description:
+				"Constructor de formularios web con editor drag-and-drop, enlaces públicos para responder sin necesidad de cuenta, analítica de respuestas en tiempo real y generación de formularios asistida por IA.",
+			stack: ["Next.js", "Supabase", "TypeScript", "Tailwind"],
+			imageUrl: formCraftProjectImage.src,
+			previewMode: "iframe",
+			projectUrl: "https://formcraft-pro.vercel.app/"
+		},
+		{
 			name: "Moving Pets Colombia",
 			description:
 				"Sitio web corporativo para una empresa de transporte profesional de mascotas, con secciones de servicios, proceso, beneficios, galería y contacto.",
@@ -368,6 +378,10 @@ export const portfolioConfig = {
 		codeLabel: "Code",
 		viewProjectDotPrefix: "View",
 		projects: [
+			{
+				description:
+					"Web form builder with a drag-and-drop editor, public share links to collect responses without an account, real-time response analytics and AI-assisted form generation."
+			},
 			{
 				description:
 					"Corporate website for a professional pet transportation company, featuring services, process, benefits, gallery and contact sections."
