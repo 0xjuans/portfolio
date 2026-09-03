@@ -13,11 +13,11 @@ export const portfolioConfig = {
 	experienceSectionTitle: "Experiencia Profesional",
 	experiences: [
 		{
-			role: "Desarrollador Jr",
+			role: "Desarrollador Full Stack",
 			company: "TECSER & CLOUD",
 			workMode: "Tiempo Completo",
 			location: "Bogota, Colombia",
-			dateRange: "Febrero 2026 - Actual",
+			dateRange: "Febrero 2026 - Abril 2026",
 			achievements: [
 				"Desarrollé una librería de componentes reutilizables en Angular y Tailwind, estandarizando la interfaz de usuario y acelerando el tiempo de desarrollo de nuevas funcionalidades en un 30%.",
 				"Optimicé el rendimiento del backend mediante la implementación de caché y el ajuste de consultas en Spring Data JPA, logrando una reducción del 45% en los tiempos de respuesta de las APIs críticas.",
@@ -30,7 +30,7 @@ export const portfolioConfig = {
 			company: "Aprendizaje Interactivo",
 			workMode: "Tiempo Completo",
 			location: "Bogotá, Colombia",
-			dateRange: "Marzo 2024 - Presente",
+			dateRange: "Marzo 2024 - Enero 2026",
 			achievements: [
 				"Colaboré en el desarrollo de una plataforma tipo bootcamp para el Ministerio TIC de Colombia.",
 				"Implementé prácticas de arquitectura de información y optimización de experiencia de usuario.",
